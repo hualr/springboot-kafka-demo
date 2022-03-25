@@ -10,7 +10,7 @@ public class KafkaConsumer {
 
 
     @KafkaListener(topics = "test",groupId = "defaultConsumerGroup")
-    public void listenZhugeGroup(ConsumerRecord<String, String> record, Acknowledgment ack) {
+    public void listenDefaultGroup(ConsumerRecord<String, String> record, Acknowledgment ack) {
         String value = record.value();
         System.out.println("接受消息如下：======================================start========================");
         System.out.println(value);
