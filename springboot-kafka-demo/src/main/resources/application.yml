@@ -22,7 +22,6 @@ spring:
     # 消费者
     consumer:
       # 默认的消费组ID
-      group-id: defaultConsumerGroup
       # 是否自动提交offset
       enable-auto-commit: false
       # 当kafka中没有初始offset或offset超出范围时将自动重置offset
