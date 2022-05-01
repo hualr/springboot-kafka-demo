@@ -11,7 +11,7 @@ import java.util.Date;
 @RequestMapping("/rest")
 public class KafkaController {
 
-    private final static String TOPIC_NAME = "test";
+    private final static String TOPIC_NAME = "myTopic";
 
     @Autowired
     private KafkaTemplate<String,String> kafkaTemplate;

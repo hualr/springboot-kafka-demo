@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class KafkaConsumer {
 
 
-    @KafkaListener(topics = "test",groupId = "defaultConsumerGroup")
+    @KafkaListener(topics = "myTopic",groupId = "defaultConsumerGroup")
     public void listenDefaultGroup(ConsumerRecord<String, String> record, Acknowledgment ack) {
         String value = record.value();
         System.out.println("接受消息如下：======================================start========================");

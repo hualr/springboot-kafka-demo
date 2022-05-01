@@ -4,7 +4,7 @@ server:
 spring:
   kafka:
     bootstrap-servers:
-      - 120.55.13.159:9092
+      - 101.201.67.114:9092
     # 生产者
     producer:
       # 设置大于0的值，则客户端会将发送失败的记录重新发送
