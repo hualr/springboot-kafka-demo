@@ -1,5 +1,7 @@
 package com.cheng.kafka.com.consumer;
 
+import com.alibaba.fastjson2.JSONObject;
+import com.cheng.kafka.com.entity.MessageDTO;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -15,7 +17,7 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "topic1", groupId = "defaultConsumerGroup1")
     public void listenDefaultGroup1(ConsumerRecord<String, String> record, Acknowledgment ack) {
-        String value = record.value();
+        final MessageDTO value = JSONObject.parseObject(record.value(), MessageDTO.class);
         System.out.println("接消费阶段1消息如下：======================================start========================");
         System.out.println(value);
         System.out.println(record);
@@ -23,7 +25,7 @@ public class KafkaConsumer {
         //手动提交offset
         ack.acknowledge();
 
-        kafkaTemplate.send("topic2", "msg:" + "收到消息后发送");
+        kafkaTemplate.send("topic2", String.valueOf((value.getHandleId() + 1)));
     }
 
     @KafkaListener(topics = "topic2", groupId = "defaultConsumerGroup2")
